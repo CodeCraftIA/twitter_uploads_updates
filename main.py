@@ -147,5 +147,5 @@ def main_function():
 if __name__ == '__main__':
     main_function()
     scheduler = BlockingScheduler()
-    scheduler.add_job(main_function, 'interval', minutes=20)
+    scheduler.add_job(main_function, 'interval', minutes=5)
     scheduler.start()
