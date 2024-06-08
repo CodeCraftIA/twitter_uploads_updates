@@ -119,7 +119,7 @@ def main_function():
         product = next(item for item in available_set if item[0] == title)
         print(product)
         try:
-            message = "Product Back to Stock: " + title + "-" + product[1] + "\n" + product[2]
+            message = "Product Back In Stock: " + title + "-" + product[1] + "\n" + product[2]
             #api.update_status(data_str)
             client.create_tweet(text = message)
             print("Tweeted successfully!")
