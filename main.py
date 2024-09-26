@@ -60,7 +60,7 @@ def scrape(url):
             price = product.find('span', class_= "price__current")
             if price:
                 price = price.text.strip()
-            title_div = product.find('div', class_="card__title card__text card__details--wrapper relative block px-sm-sm text-left justify-start c-text-primary")
+            title_div = product.find('div', class_="card__title card__text card__details--wrapper relative block placement-below text-left justify-start c-text-primary")
             if title_div:
                 title = title_div.text.strip()
             if "Sold out" not in product.get_text():
@@ -112,7 +112,7 @@ def main_function():
             print("Tweeted successfully!")
         except Exception as e:
             print("Error during tweeting:", e)
-        time.sleep(10)
+        time.sleep(30)
     
     print("Restocked Products:")
     for title in restocked_products:
@@ -125,7 +125,7 @@ def main_function():
             print("Tweeted successfully!")
         except Exception as e:
             print("Error during tweeting:", e)
-        time.sleep(10)
+        time.sleep(30)
     
     print("Newly Sold Out Products:")
     for title in newly_sold_out_products:
@@ -138,7 +138,7 @@ def main_function():
             print("Tweeted successfully!")
         except Exception as e:
             print("Error during tweeting:", e)
-        time.sleep(10)
+        time.sleep(30)
     
     # Update files
     write_titles_to_file(current_available_titles, 'available_products.txt')
@@ -147,5 +147,5 @@ def main_function():
 if __name__ == '__main__':
     main_function()
     scheduler = BlockingScheduler()
-    scheduler.add_job(main_function, 'interval', minutes=5)
+    scheduler.add_job(main_function, 'interval', minutes=15)
     scheduler.start()
