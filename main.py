@@ -18,7 +18,7 @@ access_token_secret = os.environ.get('access_token_secret')
 def read_titles_from_file(filename):
     titles_set = set()
     try:
-        with open(filename, 'r') as file:
+        with open(filename, 'r', encoding='utf-8') as file:
             for line in file:
                 titles_set.add(line.strip())
     except FileNotFoundError:
@@ -26,7 +26,7 @@ def read_titles_from_file(filename):
     return titles_set
 
 def write_titles_to_file(titles_set, filename):
-    with open(filename, 'w') as file:
+    with open(filename, 'w', encoding='utf-8') as file:
         for title in titles_set:
             file.write(f"{title}\n")
 
